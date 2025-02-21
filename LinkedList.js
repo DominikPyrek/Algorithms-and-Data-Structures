@@ -32,16 +32,43 @@ class LinkedList {
     currentNode.next = node;
   }
 
+  addAtTheIndex(data, index) {
+    let node = new Node(data);
+    let indexNow = 0;
+    let currentNode = this.head;
+    if (index < 0 || index > (this.lenght() + 1)) {
+      console.log("Nie poprawny index")
+      return;
+    }
+    while (currentNode.next && index > indexNow) {
+      currentNode = currentNode.next;
+    }
+    currentNode.next = node;
+  }
+
   deleteAtTheStart() {
+    if (this.head === null) {
+      return
+    }
     this.head = this.head.next;
   }
+
   deleteAtTheEnd() {
     let currentNode = this.head;
+    if (this.head === null) {
+      return;
+    }
+    if (this.head.next === null) {
+      this.head = null;
+      return;
+    }
     while (currentNode.next.next) {
       currentNode = currentNode.next;
     }
     currentNode.next = null;
   }
+
+
   lenght() {
     let len = 0;
     let currentNode = this.head;
@@ -49,7 +76,7 @@ class LinkedList {
       len += 1
       currentNode = currentNode.next;
     }
-    console.log("Lenght is " + len);
+    return len;
   }
 
   logIt() {
@@ -72,10 +99,11 @@ let LL = new LinkedList
 LL.addAtTheStart(8)
 LL.addAtTheStart(12)
 LL.addAtTheEnd(16)
+LL.addAtTheIndex(21, 2)
+LL.logIt()
 LL.deleteAtTheStart()
 LL.deleteAtTheEnd()
-LL.deleteAtTheEnd()
 LL.logIt()
-LL.lenght()
+console.log(LL.lenght())
 
 

@@ -70,12 +70,28 @@ class LinkedList {
 
   deleteAtTheIndex(index) {
     if (this.head === null) {
-      return;
+      return "Lista jest pusta";
+    }
+    if (index < 0) {
+      return "Index nie moze byc mniejszy niz 0";
+    }
+    if (index === 0) {
+      this.deleteAtTheStart();
     }
     let currentNode = this.head;
-    indexAtTheMoment = 0;
-    while (currentNode) {
+    let indexAtTheMoment = 0;
+    let previousNode = null;
+    while (currentNode && indexAtTheMoment < index) {
+      previousNode = currentNode;
+      currentNode = currentNode.next;
+      indexAtTheMoment += 1;
+    }
+    if (currentNode === null) {
+      return "nie ma takiego indexu"
+    }
 
+    if (previousNode !== null) {
+      previousNode.next = currentNode.next;
     }
   }
 
@@ -146,5 +162,13 @@ console.log(LL.findIndexByValue(213))
 console.log(LL.findValueByIndex(0))
 console.log(LL.findValueByIndex(20))
 console.log(LL.lenght())
+LL.addAtTheStart(3)
+LL.addAtTheEnd(333)
+LL.logIt()
+console.log(LL.deleteAtTheIndex(-2))
+LL.deleteAtTheIndex(0)
+LL.deleteAtTheIndex(2)
+console.log(LL.deleteAtTheIndex(2000))
+LL.logIt()
 
 

@@ -68,6 +68,43 @@ class LinkedList {
     currentNode.next = null;
   }
 
+  deleteAtTheIndex(index) {
+    if (this.head === null) {
+      return;
+    }
+    let currentNode = this.head;
+    indexAtTheMoment = 0;
+    while (currentNode) {
+
+    }
+  }
+
+  findIndexByValue(value) {
+    let index = 0;
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.data == value) {
+        return index;
+      }
+      index += 1;
+      currentNode = currentNode.next;
+    }
+    return "Nie znaleziono takiej wartosci";
+  }
+
+  findValueByIndex(index) {
+    let indexAtTheMoment = 0;
+    let currentNode = this.head;
+    while (currentNode) {
+      if (indexAtTheMoment == index) {
+        return currentNode.data
+      }
+      indexAtTheMoment += 1
+      currentNode = currentNode.next
+    }
+    return "Nie znaleziono takiego indexu"
+  }
+
 
   lenght() {
     let len = 0;
@@ -104,6 +141,10 @@ LL.logIt()
 LL.deleteAtTheStart()
 LL.deleteAtTheEnd()
 LL.logIt()
+console.log(LL.findIndexByValue(16))
+console.log(LL.findIndexByValue(213))
+console.log(LL.findValueByIndex(0))
+console.log(LL.findValueByIndex(20))
 console.log(LL.lenght())
 
 
